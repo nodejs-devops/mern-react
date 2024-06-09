@@ -19,10 +19,10 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - uses: google-github-actions/auth@v2
-        with:
-          service_account: ${{ secrets.GOOGLECLOUD_SERVICE_ACCOUNT }}
-          credentials_json: ${{ secrets.GOOGLECLOUD_CREDENTIALS }}
+      # - uses: google-github-actions/auth@v2
+      #   with:
+      #     service_account: ${{ secrets.GOOGLECLOUD_SERVICE_ACCOUNT }}
+      #     credentials_json: ${{ secrets.GOOGLECLOUD_CREDENTIALS }}
 
       - name: Build and push backend image
         uses: docker/build-push-action@v5
@@ -32,13 +32,13 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/blog-backend:latest
 
-      - id: deploy-backend
-        name: Deploy backend
-        uses: google-github-actions/deploy-cloudrun@v2
-        with:
-          service: blog-backend
-          image: ${{ secrets.DOCKERHUB_USERNAME }}/blog-backend:latest
-          region: ${{ secrets.GOOGLECLOUD_REGION }}
+      # - id: deploy-backend
+      #   name: Deploy backend
+      #   uses: google-github-actions/deploy-cloudrun@v2
+      #   with:
+      #     service: blog-backend
+      #     image: ${{ secrets.DOCKERHUB_USERNAME }}/blog-backend:latest
+      #     region: ${{ secrets.GOOGLECLOUD_REGION }}
 
       - name: Build and push frontend image
         uses: docker/build-push-action@v5
