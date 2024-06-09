@@ -1,5 +1,5 @@
 export default [
     {
-        ignorePatterns: ["vite.config.js", "dist/"]
+        ignores: ["vite.config.js", "dist/"]
     }
 ];
