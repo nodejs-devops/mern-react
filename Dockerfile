@@ -1,4 +1,4 @@
-FROM node:22 AS build
+FROM node:latest AS build
 ARG VITE_BACKEND_URL=http://localhost:3001/api/v1
 WORKDIR /build
 COPY package.json .
